@@ -174,7 +174,7 @@ namespace ZyphMaths
 	}
 
 	/// <summary> Creates a matrix that uses the right handed projection perspective.</summary>
-	/// <remark> Uses tanges to calculate index 1 and 6</remark>
+	/// <remark> Uses tanges to calculate index m11 and m22</remark>
 	Matrix4x4 Matrix4x4::PerspectiveFovRH(float fieldOfView, float aspect, float zNear, float zFar)
 	{
 		float h = (1 / tan((fieldOfView / 2)));
@@ -185,8 +185,8 @@ namespace ZyphMaths
 						 0, 0, zNear * zFar / (zNear - zFar), 0);
 	}
 
-	/// <summary> Creates a matrix that uses the left handed projection perspective..</summary>
-	/// <remark> Uses tanges to calculate index 1 and 6.</remark>
+	/// <summary> Creates a matrix that uses the left handed projection perspective.</summary>
+	/// <remark> Uses tanges to calculate index m11 and m22.</remark>
 	Matrix4x4 Matrix4x4::PerspectiveFovLH(float fieldOfView, float aspect, float zNear, float zFar)
 	{
 		float h = (1 / tan((fieldOfView / 2)));
@@ -214,7 +214,7 @@ namespace ZyphMaths
 	}
 
 	/// <summary> Rotates the matrix over the x axis.</summary>
-	/// <remark> Uses cos(index 6, 11) and sin(7, 10) to rotate the matrix on the x axis. </remark>
+	/// <remark> Uses cos(index m22, m33) and sin(m23, m32) to rotate the matrix on the x axis. </remark>
 	Matrix4x4 Matrix4x4::RotateX(float pitch)
 	{
 		return Matrix4x4(1, 0, 0, 0,
@@ -224,7 +224,7 @@ namespace ZyphMaths
 	}
 
 	/// <summary> Rotates the matrix over the y axis.</summary>
-	/// <remark> Uses cos(index 1, 11) and sin(3, 9) to rotate the matrix on the y axis.</remark>
+	/// <remark> Uses cos(index m11, m33) and sin(m13, m31) to rotate the matrix on the y axis.</remark>
 	Matrix4x4 Matrix4x4::RotateY(float yaw)
 	{
 		return Matrix4x4(cos(yaw), 0, -sin(yaw), 0,
@@ -234,7 +234,7 @@ namespace ZyphMaths
 	}
 
 	/// <summary> Rotates the matrix over the z axis.</summary>
-	/// <remark> Uses cos(index 1, 6) and sin(2, 5) to rotate the matrix on the z axis.</remark>
+	/// <remark> Uses cos(index m11, m22) and sin(m12, m21) to rotate the matrix on the z axis.</remark>
 	Matrix4x4 Matrix4x4::RotateZ(float roll)
 	{
 		return Matrix4x4(cos(roll), sin(roll), 0, 0,
