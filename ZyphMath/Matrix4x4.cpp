@@ -157,6 +157,9 @@ namespace ZyphMaths
 	}
 
 	/// <summary> Creates a left handed look at matrix using the position, target and upVector as input.</summary>
+	/// <param="position"> The position of the camera.</param>
+	/// <param="target"> The target the camera is looking at.</param>
+	/// <param="upVector"> An upvector ( 0, 1, 0 ). </param>
 	Matrix4x4 Matrix4x4::LookAtLH(Vector3 position, Vector3 target, Vector3 upVector)
 	{
 		Vector3 zaxis = (target - position).Normalize();
@@ -174,6 +177,10 @@ namespace ZyphMaths
 	}
 
 	/// <summary> Creates a matrix that uses the right handed projection perspective.</summary>
+	/// <param="fieldOfView"> The angle, usually (PI/4). </param>
+	/// <param="aspect"> The aspect ratio. </param>
+	/// <param="zNear"> The nearest point that should be rendered. </param>
+	/// <param="zFar"> The furthest point that should be rendered. </param>
 	/// <remark> Uses tanges to calculate index m11 and m22</remark>
 	Matrix4x4 Matrix4x4::PerspectiveFovRH(float fieldOfView, float aspect, float zNear, float zFar)
 	{
@@ -186,6 +193,10 @@ namespace ZyphMaths
 	}
 
 	/// <summary> Creates a matrix that uses the left handed projection perspective.</summary>
+	/// <param="fieldOfView"> The angle, usually (PI/4). </param>
+	/// <param="aspect"> The aspect ratio. </param>
+	/// <param="zNear"> The nearest point that should be rendered. </param>
+	/// <param="zFar"> The furthest point that should be rendered. </param>
 	/// <remark> Uses tanges to calculate index m11 and m22.</remark>
 	Matrix4x4 Matrix4x4::PerspectiveFovLH(float fieldOfView, float aspect, float zNear, float zFar)
 	{
@@ -198,6 +209,9 @@ namespace ZyphMaths
 
 
 	/// <summary> Rotates the maxtrix by transforming the z(roll) x(pitch) and y(yaw) relative to the objects local coordinates axis.</summary>
+	/// <param="yaw"> The y rotation. </param>
+	/// <param="pitch"> The x rotation. </param>
+	/// <param="roll"> The z rotation. </param>
 	/// <remark> Order of rotation roll -> pitch -> yaw </remark>
 	Matrix4x4 Matrix4x4::RotationYawPitchRoll(float yaw, float pitch, float roll)
 	{
@@ -205,6 +219,7 @@ namespace ZyphMaths
 	}
 
 	/// <summary> Creates a matrix using the specified position offset given as param.</summary>
+	/// <param="position"> The offset Position. </param>
 	Matrix4x4 Matrix4x4::Translation(Vector3 position)
 	{
 	    return Matrix4x4(1, 0, 0, 0,
@@ -214,6 +229,7 @@ namespace ZyphMaths
 	}
 
 	/// <summary> Rotates the matrix over the x axis.</summary>
+	/// <param="yaw"> The y rotation. </param>
 	/// <remark> Uses cos(index m22, m33) and sin(m23, m32) to rotate the matrix on the x axis. </remark>
 	Matrix4x4 Matrix4x4::RotateX(float pitch)
 	{
@@ -224,6 +240,7 @@ namespace ZyphMaths
 	}
 
 	/// <summary> Rotates the matrix over the y axis.</summary>
+	/// <param="pitch"> The x rotation. </param>
 	/// <remark> Uses cos(index m11, m33) and sin(m13, m31) to rotate the matrix on the y axis.</remark>
 	Matrix4x4 Matrix4x4::RotateY(float yaw)
 	{
@@ -234,6 +251,7 @@ namespace ZyphMaths
 	}
 
 	/// <summary> Rotates the matrix over the z axis.</summary>
+	/// <param="roll"> The z rotation. </param>
 	/// <remark> Uses cos(index m11, m22) and sin(m12, m21) to rotate the matrix on the z axis.</remark>
 	Matrix4x4 Matrix4x4::RotateZ(float roll)
 	{
